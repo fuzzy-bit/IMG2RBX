@@ -57,15 +57,6 @@ namespace IMG2RBX {
             return false;
         }
 
-        static int[] ColorToArray(Color color) {
-            return new int[] {
-                color.R,
-                color.G,
-                color.B,
-                color.A
-            };
-        }
-
         static void Main(string[] args) {
             if (args.Count() != 0) {
                 var checkedImage = CheckImage(args[0]);
