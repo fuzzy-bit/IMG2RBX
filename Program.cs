@@ -64,8 +64,8 @@ namespace IMG2RBX {
                 if (checkedImage != null && (CheckFormat(args[0]))) {
                     int x, y;
 
-                    if (File.Exists(args[0] + ".txt")) {
-                        File.Delete(args[0] + ".txt");
+                    if (File.Exists(args[0] + ".lua")) {
+                        File.Delete(args[0] + ".lua");
                     }
 
                     void AddText(FileStream stream, string value) {
@@ -73,9 +73,7 @@ namespace IMG2RBX {
                         stream.Write(info, 0, info.Length);
                     }
 
-                    using (FileStream luaFile = File.Create(args[0] + ".txt")) {
-                        string[] lines = new string[] { "return { ", "}" };
-
+                    using (FileStream luaFile = File.Create(args[0] + ".lua")) {
                         AddText(luaFile, "local function c(r,g,b) return Color3.new(r,g,b) end return {");
 
                         for (x = 0; x < checkedImage.Width; x++) {
@@ -90,8 +88,6 @@ namespace IMG2RBX {
                                         currentColor.B +
                                     "),"
                                 );
-
-                                lines[lines.Length - 1] = "asshat";
                             }
 
                             AddText(luaFile, "}");
