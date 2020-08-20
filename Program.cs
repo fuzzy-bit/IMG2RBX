@@ -90,7 +90,7 @@ namespace IMG2RBX {
                                 );
                             }
 
-                            AddText(luaFile, "}");
+                            AddText(luaFile, "},");
                         }
 
                         AddText(luaFile, "}");
