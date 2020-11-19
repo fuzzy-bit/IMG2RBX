@@ -66,6 +66,7 @@ namespace IMG2RBX {
 
                     if (File.Exists(args[0] + ".lua")) {
                         File.Delete(args[0] + ".lua");
+                        Console.WriteLine("Lua file of this name exists already, replacing.");
                     }
 
                     void AddText(FileStream stream, string value) {
@@ -74,7 +75,7 @@ namespace IMG2RBX {
                     }
 
                     using (FileStream luaFile = File.Create(args[0] + ".lua")) {
-                        AddText(luaFile, "local function c(r,g,b) return Color3.new(r,g,b) end return {");
+                        AddText(luaFile, "local function c(r,g,b) return Color3.fromRGB(r,g,b) end return {");
 
                         for (x = 0; x < checkedImage.Width; x++) {
                             AddText(luaFile, "{");
@@ -95,9 +96,10 @@ namespace IMG2RBX {
 
                         AddText(luaFile, "}");
 
-                        Console.WriteLine("Converted " + args[0] + ".");
                         luaFile.Close();
                     }
+
+                    Console.WriteLine("Converted " + args[0] + ".");
                 }
             }
             else {
