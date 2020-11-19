@@ -31,7 +31,7 @@ namespace IMG2RBX {
                         Console.WriteLine(exception + "\n");
                     }
 
-                    Console.WriteLine("Are you sure this is a valid image? Please check your file format. (Do NOT use GIF or BMP.)");
+                    Console.WriteLine("Failed to convert. \nAre you sure this is a valid image? Please check your file format. (Do NOT use GIF or BMP.)");
                     return null;
                 }
 
